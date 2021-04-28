@@ -1,0 +1,359 @@
+// Variables
+
+// color
+
+$white : #ffffff;
+$gray : #f4f4f4;
+$gray-text : #777777 !default;
+$gray-title : #999999 !default;
+$label : #f7f4f0;
+$black : #111111;
+$black-bg : #333333;
+$gold : #b89470;
+$icon : #aaaaaa;
+$text : #cccccc;
+$border : #dddddd;
+$border-blue : #bcd6ff;
+$blue : #102f63 !default;
+$purple : #c5c5e9;
+$pink : #ff9595;
+$red : #ef0000;
+$orange : #ff5951;
+$sky : #009df2;
+$brown : #db7c0b;
+$yellow : #ffd800;
+$green : #005e3c;
+$cyan : #17a2b8;
+$dark : #040000;
+
+//メディアクエリ
+
+$pc : 991px;
+$tb : 768px;
+$sp : 440px;
+
+@mixin pc {
+	@media (max-width: ($pc)) {
+		@content;
+	}
+}
+@mixin tb {
+	@media (max-width: ($tb)) {
+		@content;
+	}
+}
+
+@mixin sp {
+	@media (max-width: ($sp)) {
+		@content;
+	}
+}
+//snippet
+//グラデーション
+@mixin g-orange {
+	background : linear-gradient(to right, $lorange 0, $orange 100%);
+}
+@mixin g-pink {
+	background : linear-gradient(to right, #ff8db0 0, #ff7bba 100%);
+}
+@mixin g-green {
+	background : linear-gradient(to right, #3ed411 0, #11ca2a 100%);
+}
+@mixin g-sky {
+	background : linear-gradient(to right, #1da0f3 0, #1da0f3 100%);
+}
+@mixin g-blue {
+	background : linear-gradient(to right, #064d6e 0, #001331 100%);
+}
+//ボタン関連
+.btn_area {
+	display : flex;
+
+	margin-bottom : 0;
+	li {
+		width : calc((100% - 30px) / 3);
+		height : 60px;
+		margin-right : 15px;
+		&:nth-of-type(3n) {
+			margin-right : 0;
+		}
+		a {
+			font-size : 18px;
+			font-weight : bold;
+
+			display : flex;
+			align-items : center;
+			justify-content : center;
+
+			height : 100%;
+
+			color : $blue;
+			border : 2px solid $blue;
+
+			&:hover {
+				color : $white;
+				background-color : $blue;
+			}
+		}
+		&.active {
+			position : relative;
+			a {
+				color : $white;
+				background-color : $blue;
+			}
+			&::before {
+				position : absolute;
+				bottom : -15px;
+				left : calc(50% - 15px);
+
+				width : 0;
+				height : 0;
+
+				content : "";
+
+				border-width : 15px 15px 0 15px;
+				border-style : solid;
+				border-color : #2a4d88 transparent transparent transparent;
+			}
+		}
+	}
+	.btn {
+		font-size : 16px;
+		font-weight : bold;
+		line-height : 1.5;
+
+		position : relative;
+
+		display : flex;
+		align-items : center;
+		justify-content : space-between;
+
+		width : 100%;
+		max-width : 280px;
+
+		color : $white;
+		border-radius : 5px;
+
+@include g-orange;
+
+		&.square {
+			justify-content : center;
+
+			width : 320px;
+			max-width : 320px;
+			height : 50px;
+			margin : 0 auto;
+
+			color : $black;
+			border : 1px solid $black;
+			border-radius : 0;
+			background : $white;
+			&::after {
+				position : absolute;
+				right : 1em;
+			}
+		}
+		&_orange {
+			background-color : $orange;
+		}
+		&_black {
+			background-color : $black;
+		}
+	}
+}
+//きらっとするボタン
+.more-btn {
+	display : flex;
+	align-content : center;
+	align-items : center;
+	flex-wrap : wrap;
+	justify-content : center;
+
+	margin : 0 auto;
+
+	border : 1px solid $black;
+	border-radius : 0;
+	@media (max-width: 440px) {
+		width : 90%;
+	}
+	.more {
+		font-size : 16px;
+		line-height : 2.2;
+
+		position : relative;
+
+		display : block;
+		overflow : hidden;
+
+		transition : 0.3s;
+		text-align : center;
+
+		border-radius : 0;
+		&:hover {
+			font-style : italic;
+
+			cursor : pointer;
+
+			color : $white !important;
+			a {
+				color : $white;
+			}
+			&::after {
+				left : -10%;
+
+				width : 120%;
+			}
+		}
+		&::after {
+			position : absolute;
+			z-index : -1;
+			bottom : 0;
+			left : 50%;
+			left : -10%;
+
+			width : 0;
+			height : 3px;
+			height : 120%;
+
+			content : "";
+			transition : 0.3s;
+			transform : skewX(15deg);
+
+			background : $black;
+		}
+	}
+}
+// きらっとしないボタン
+.btn-n {
+	font-size : 16px;
+	font-weight : bold;
+	line-height : 1;
+
+	position : relative;
+
+	display : block;
+
+	width : 100%;
+	max-width : 320px;
+	margin : 20px auto;
+	padding : 15px;
+
+	text-align : center;
+
+	color : $white;
+	border : solid 2px $blue;
+	border-radius : 5px;
+	background-color : $blue;
+
+	span {
+		line-height : 1;
+
+		position : absolute;
+		top : 13px;
+		right : 10px;
+
+		display : block;
+	}
+
+	&:hover {
+		color : $blue;
+		background-color : #eeeeee;
+	}
+	&::after {
+		position : absolute;
+		right : 10px;
+	}
+}
+
+a.bg_pink:hover {
+	opacity : 0.6;
+	background-color : $pink;
+}
+a.bg_green:hover {
+	opacity : 0.6;
+	background-color : $green;
+}
+
+//fontawesome icon
+.mail {
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-size : 1.5em;
+		font-weight : 900;
+
+		padding-left : 0.8em;
+
+		content : "\f0e0";
+	}
+}
+.angle {
+	&::after {
+		font-family : "Font Awesome 5 Free";
+		font-weight : 900;
+
+		content : "\f105";
+	}
+}
+.required {
+	&::after {
+		font-family : "Font Awesome 5 Free";
+		font-size : 14px;
+		font-weight : 900;
+
+		padding-right : 10px;
+		padding-left : 10px;
+
+		content : "必須";
+
+		color : $white;
+		border-radius : 5px;
+		background-color : $red;
+	}
+}
+.tel {
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-size : 1.5em;
+		font-weight : 900;
+
+		content : "\f095";
+	}
+}
+.fax {
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-size : 1.5em;
+		font-weight : 900;
+
+		content : "\f1ac";
+	}
+}
+.pdf {
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-weight : 900;
+
+		content : "\f1c1";
+	}
+}
+.movie {
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-weight : 900;
+
+		content : "\f1c8";
+	}
+}
+.info-circle {
+	position : relative;
+	&::before {
+		font-family : "Font Awesome 5 Free";
+		font-weight : 900;
+
+		position : absolute;
+		top : 5px;
+		left : 0;
+
+		content : "\f05a";
+	}
+}

@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+body {
+	font-family : "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+	"游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "メイリオ",
+	sans-serif;
+	font-size : 16px;
+	line-height : 1.8;
+
+	width : 100%;
+
+	color : $black;
+}
+
+a , a:link , a:visited , a:hover {
+	text-decoration : none;
+
+	color : $black;
+}
+
+p , dl , dt , dd , h3 {
+	margin : 0;
+}
+
+header {
+	display : flex;
+	align-items : center;
+	justify-content : flex-start;
+
+	height : 110px;
+	padding : 0;
+
+	h1 {
+		z-index : 2000;
+
+		margin-right : auto;
+		padding-left : 70px;
+
+		@include pc {
+			margin-left : auto;
+			padding-left : 0;
+		}
+		@include sp {
+			margin-left : 15px;
+		}
+		a {
+			@include pc {
+				display : flex;
+				align-items : center;
+				justify-content : center;
+
+				margin : 0;
+				padding : 0;
+			}
+		}
+	}
+}
